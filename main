@@ -1,0 +1,125 @@
+
+public class KilometerstoMiles extends javax.swing.JFrame {
+
+    
+    public KilometerstoMiles() {
+        initComponents();
+    }
+                         
+    private void initComponents() {
+
+        inputField = new javax.swing.JTextField();
+        kilometerLabel = new javax.swing.JLabel();
+        convertButton = new javax.swing.JButton();
+        milesLabel = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Kilometers to Miles Conveter");
+        setAlwaysOnTop(true);
+
+        inputField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputFieldActionPerformed(evt);
+            }
+        });
+
+        kilometerLabel.setText("Kilometers");
+
+        convertButton.setText("Convert");
+        convertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                convertButtonActionPerformed(evt);
+            }
+        });
+
+        milesLabel.setText("Miles");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(kilometerLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(convertButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(milesLabel)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {convertButton, inputField, kilometerLabel, milesLabel});
+
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kilometerLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(convertButton)
+                    .addComponent(milesLabel))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        pack();
+    }                       
+
+    private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    int distKilometer= (int)(Double.parseDouble(inputField.getText()));
+    double distMiles = (distKilometer/1.609);
+    distMiles = distMiles*100;
+    distMiles = Math.round(distMiles);
+    distMiles = distMiles/100;
+    
+    milesLabel.setText(distMiles + " Miles");       
+    }                                             
+
+    private void inputFieldActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        
+    }                                          
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+       
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(KilometerstoMiles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(KilometerstoMiles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(KilometerstoMiles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(KilometerstoMiles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+      
+
+       
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new KilometerstoMiles().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton convertButton;
+    private javax.swing.JTextField inputField;
+    private javax.swing.JLabel kilometerLabel;
+    private javax.swing.JLabel milesLabel;
+    // End of variables declaration                   
+}
